@@ -20,13 +20,14 @@ public class CardService {
 
 	private Map<Long, CardDTO> map = new HashMap<>();
 
-	public CardDTO addToCard(Long id, int quantity) {
+	public CardDTO addToCard(Long id, String quantity) {
 		Product product = productRepository.findById(id).get();
 		CardDTO cardDTO = new CardDTO();
 		boolean check = map.containsKey(id);
+		int soLuong = Integer.parseInt(quantity);
 		if (check == false) {
 			cardDTO = new CardDTO();
-			cardDTO.setQuantity(quantity);
+			cardDTO.setQuantity(soLuong);
 			cardDTO.setProduct(product);
 			map.put(id, cardDTO);
 			System.out.println(cardDTO.getQuantity());
@@ -35,7 +36,6 @@ public class CardService {
 			cardDTO.increment();
 			cardDTO.setProduct(product);
 			System.out.println(cardDTO.getQuantity());
-
 			map.put(id, cardDTO);
 		}
 		return cardDTO;

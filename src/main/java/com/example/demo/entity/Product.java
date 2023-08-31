@@ -63,4 +63,13 @@ public class Product extends BaseEntity {
 	@JsonIgnore
 	private List<Order> orders;
 
+
+	@Override
+	public String toString() {
+		return "Product [title=" + title + ", description=" + description + ", details=" + details + ", price=" + price
+				+ ", status=" + status + ", hot=" + hot + ", image=" + image + ", viewCount=" + viewCount
+				+ ", categoryProduct=" + categoryProduct + ", branch=" + branch + ", images=" + images + ", orders="
+				+ orders + "]";
+	}
+
 }

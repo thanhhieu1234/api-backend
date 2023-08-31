@@ -35,9 +35,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.cors().and().csrf().disable();
 
 		http.authorizeHttpRequests().antMatchers("/admin/**").authenticated().antMatchers("/admin/**").hasRole("ADMIN")
-        .antMatchers("/product/add-to-cart/**").authenticated()
-				.anyRequest().permitAll();
+				.antMatchers("/product/add-to-cart/**").authenticated().anyRequest().permitAll();
 
-		http.formLogin();
+		http.oauth2Login().loginPage("/login").defaultSuccessUrl("/oauth2/login/success",true)
+				.failureUrl("/oauth2/login/fail").authorizationEndpoint().baseUri("/oauth2/authorization");
+		
+		http.logout().logoutSuccessUrl("/logoutURL").clearAuthentication(false);
 	}
 }

@@ -36,7 +36,6 @@ public class OrderService {
 	public Order save(OrderDTO dto) {
 		User user = iUserRepository.findById(dto.getUser()).get();
 		List<Product> products = this.findAllByID(dto);
-
 		Order order = orderConverter.toEntity(dto);
 		order.setDateBuy(new Date());
 		order.setProducts(products);

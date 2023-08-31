@@ -25,27 +25,14 @@
 <body>
 
 	<div class="container">
-		<div class="row" style="margin-left: 200px;margin-top: 100px">
-			<div class="col-8 m-auto">
-				<form:form action="" modelAttribute="user" method="post">
-					<div class="form-group">
-						<label for="exampleInputEmail1">Username</label>
-						 <form:input path="username"/> 
-					</div>
-					<div class="form-group">
-						<label for="exampleInputPassword1">Password</label> 
-						 <form:password path="password"/>
-					</div>
-					<div class="form-check">
-						<input type="checkbox" class="form-check-input" id="exampleCheck1">
-						<label class="form-check-label" for="exampleCheck1">Check
-							me out</label>
-					</div>
-					<button type="submit" class="btn btn-primary">Login</button>
-				</form:form>
-			</div>
-
-		</div>
+	
+	
+	
+		${mess } 
+		<a href="/oauth2/authorization/facebook">Facebook</a> <a
+			href="/oauth2/authorization/google">Google</a>
+		<a
+			href="/logout">Logout</a>	
 
 	</div>
 </body>

@@ -39,7 +39,7 @@ public class CardController {
 	private HttpSession session;
 
 	@GetMapping("/product/add-to-cart/{id}")
-	private String addToCard(Model model, @PathVariable Long id,@RequestParam(name="quantity") int quantity) {
+	private String addToCard(Model model, @PathVariable Long id,@RequestParam(name="quantity",defaultValue = "1") String quantity) {
 	    
 		cardService.addToCard(id,quantity);
 		model.addAttribute("card", cardService.findAll());
@@ -75,7 +75,6 @@ public class CardController {
 	private String homeCheckOut(Model model, @ModelAttribute("order") Order order) {
 		model.addAttribute("card", cardService.findAll());
 		model.addAttribute("total", cardService.getAmount());
-		model.addAttribute("checkout", "Thanh toán thành công");
 		return "/client/checkout";
 	}
 	
@@ -102,7 +101,7 @@ public class CardController {
 			cardService.clearCard();
 			System.out.println(body);
 		}
-		
+		model.addAttribute("checkout", "Thanh toán thành công");
 		return "/client/checkout";
 	}
 

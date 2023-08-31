@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 
@@ -39,6 +40,9 @@ public class User extends BaseEntity {
 	@Column(name = "phone", columnDefinition = "nvarchar(250)")
 	private String phone;
 	private Boolean status;
+	
+	private String otp;
+	private LocalDateTime dateTime;
 	
 	@ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@JoinTable(
